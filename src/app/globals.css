@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.head-font{
+    font-family: var(--font-montserrat);
+}
+
+.logo-text{
+    font-family: var(--font-suez-one);
+}
+
+.test{
+    font-family: var(--font-moto-sans);
+}
