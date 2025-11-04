@@ -169,67 +169,91 @@ export default function ProductPage() {
         </div>
 
         {/* Enquiry Form */}
-        <div className="mt-16 p-8 bg-gray-900 rounded-lg">
-          <h3 className="text-2xl font-semibold text-amber-400 mb-6 text-center">
+        <div className="mt-16 p-6 md:p-10 bg-gray-900 rounded-xl shadow-lg border border-gray-800">
+          <h3 className="text-2xl md:text-3xl font-semibold text-amber-400 mb-8 text-center leading-tight">
             Looking for “{product.name}”?
           </h3>
 
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {/* Name */}
             <input
               type="text"
-              placeholder="Name"
-              className="p-3 rounded bg-gray-800 focus:outline-none"
+              placeholder="Your Name"
+              className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition"
             />
+
+            {/* Email */}
             <input
               type="email"
-              placeholder="Email"
-              className="p-3 rounded bg-gray-800 focus:outline-none"
+              placeholder="Email Address"
+              className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition"
             />
+
+            {/* Mobile */}
             <input
               type="tel"
               placeholder="Mobile No."
-              className="p-3 rounded bg-gray-800 focus:outline-none"
+              className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition"
             />
+
+            {/* Quantity */}
             <input
               type="text"
               placeholder="Quantity"
-              className="p-3 rounded bg-gray-800 focus:outline-none"
+              className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition"
             />
-            <div className="flex gap-6 col-span-2 justify-center">
-              <label className="flex items-center gap-2">
-                <input type="radio" name="purpose" value="reselling" />
+
+            {/* Purpose (Radio Buttons) */}
+            <div className="col-span-1 md:col-span-2 flex flex-col sm:flex-row justify-center items-center gap-4 py-2">
+              <label className="flex items-center gap-2 text-sm sm:text-base">
+                <input
+                  type="radio"
+                  name="purpose"
+                  value="reselling"
+                  className="accent-amber-500"
+                />
                 Reselling
               </label>
-              <label className="flex items-center gap-2">
-                <input type="radio" name="purpose" value="enduse" />
+              <label className="flex items-center gap-2 text-sm sm:text-base">
+                <input
+                  type="radio"
+                  name="purpose"
+                  value="enduse"
+                  className="accent-amber-500"
+                />
                 End Use
               </label>
             </div>
+
+            {/* Requirement Details */}
             <textarea
-              placeholder="Requirement Details"
-              className="md:col-span-2 p-3 rounded bg-gray-800 focus:outline-none h-32"
+              placeholder="Requirement Details..."
+              className="col-span-1 md:col-span-2 w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition h-32 md:h-40 resize-none"
             ></textarea>
+
+            {/* Submit Button */}
             <button
               type="submit"
-              className="md:col-span-2 bg-amber-500 hover:bg-amber-400 text-black py-3 rounded-md font-semibold transition"
+              className="col-span-1 md:col-span-2 bg-amber-500 hover:bg-amber-400 text-black py-3 md:py-4 rounded-md font-semibold text-base md:text-lg transition-all"
             >
               Send Enquiry
             </button>
           </form>
         </div>
 
+
         {/* Additional Images */}
         <h2 className="text-2xl font-semibold text-amber-400 mt-12 mb-6 text-center">
           Additional Images
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+        <div className="flex flex-row flex-wrap  gap-6 justify-center items-center">
           {product.images.map((img, idx) => (
             <div
               key={idx}
               onClick={() => setMainImage(img)}
               className={`relative w-56 h-56 rounded-lg overflow-hidden cursor-pointer border-2 transition-all duration-300 ${mainImage === img
-                  ? "border-amber-500 shadow-lg"
-                  : "border-gray-700 hover:border-white/80"
+                ? "border-amber-500 shadow-lg"
+                : "border-gray-700 hover:border-white/80"
                 }`}
             >
               <Image

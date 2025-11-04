@@ -9,7 +9,7 @@ export default function EnquiryPopup() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed top-1/2  right-10 rotate-90 origin-bottom-right bg-amber-500 hover:bg-amber-400 text-black font-semibold px-4 py-2 rounded-t-md shadow-lg z-[9999] transition-all duration-300"
+        className="fixed top-1/2  right-12 rotate-90 origin-bottom-right bg-amber-500 hover:bg-amber-400 text-black font-semibold px-4 py-2 rounded-t-md shadow-lg z-[9999] transition-all duration-300"
       >
         Submit Your Requirement
       </button>
