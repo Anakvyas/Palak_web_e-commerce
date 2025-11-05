@@ -7,62 +7,21 @@ import { Menu, Search, X } from "lucide-react";
 const productData = [
   {
     id: "1",
-    name: " Single Puli",
-    material: "Aluminium",
-    color: "Silver",
-    feature: "Durable, Rust Proof",
-    surface: "Polished",
-    pack: "Box",
-    brand: "Palak",
-    images: ["/images/single.png", "/images/single1.jpg", "/images/double2.jpg"],
-  },
-  {
-    id: "2",
-    name: "Chest handle",
-    material: "Aluminium",
-    color: "Chrome",
-    feature: "Fine Finish, Rust Resistant",
-    surface: "Polished",
-    pack: "Box",
-    brand: "Palak",
-    images: ["/images/double.png", "/images/double1.jpg",],
-  },
-  {
-    id: "3",
-    name: "Stopper",
+    name: "Door kit",
     material: "Aluminium",
     color: "Steel Grey",
     feature: "Strong Grip, Corrosion Resistant",
     surface: "Matte Finish",
     pack: "Piece",
     brand: "Palak",
-    images: ["/images/stopper.png", "/images/stopper1.jpg", "/images/stopper2.jpg", "/images/stopper4.jpg"],
+    images: [
+      "/images/door.jpg",
+      "/images/door1.jpg",
+      "/images/door2.jpg",
+      "/images/door3.jpg",
+    ],
+    type: "door-kit", // To enable toggle
   },
-
-  {
-    id: "4",
-    name: "Double Puli",
-    material: "Aluminium",
-    color: "Steel Grey",
-    feature: "Strong Grip, Corrosion Resistant",
-    surface: "Matte Finish",
-    pack: "Piece",
-    brand: "Palak",
-    images: ["/images/doublepuli.jpg", "/images/doublepuli1.jpg"]
-
-  }
-  ,
-    {id: "5",
-    name:"Door kit",
-    material: "Aluminium",
-    color: "Steel Grey",
-    feature: "Strong Grip, Corrosion Resistant",
-    surface: "Matte Finish",
-    pack: "Piece",
-    brand: "Palak",
-    images: ["/images/door.jpg","/images/door1.jpg", "/images/door2.jpg","/images/door3.jpg"]
-
-  }
 ];
 
 export default function ProductPage() {
@@ -76,6 +35,9 @@ export default function ProductPage() {
 
   const [mainImage, setMainImage] = useState(product.images[0]);
 
+  // Toggle only for Door Kit
+  const [kitType, setKitType] = useState<"double" | "single">("double");
+
   return (
     <div className="min-h-screen bg-black text-white p-6 md:p-12 logo-text">
       <header className="w-full shadow-md bg-black/90 fixed top-0 z-50">
@@ -86,10 +48,10 @@ export default function ProductPage() {
 
           <div className="hidden md:flex items-center space-x-8">
             <nav className="flex space-x-6">
-              <a href="#home" className="hover:text-amber-400 transition">Home</a>
-              <a href="#about" className="hover:text-amber-400 transition">About Us</a>
-              <a href="#products" className="hover:text-amber-400 transition">Products</a>
-              <a href="#contact" className="hover:text-amber-400 transition">Contact</a>
+              <a href="/" className="hover:text-amber-400 transition">Home</a>
+              <a href="/#about" className="hover:text-amber-400 transition">About Us</a>
+              <a href="/#products" className="hover:text-amber-400 transition">Products</a>
+              <a href="/#contact" className="hover:text-amber-400 transition">Contact</a>
             </nav>
 
             <div className="flex items-center bg-gray-800 rounded-full px-3 py-1">
@@ -107,70 +69,79 @@ export default function ProductPage() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden bg-black border-t border-gray-800">
             <nav className="flex flex-col space-y-4 p-4 text-center">
-              <a href="#home" className="hover:text-amber-400 transition">Home</a>
-              <a href="#about" className="hover:text-amber-400 transition">About Us</a>
-              <a href="#products" className="hover:text-amber-400 transition">Products</a>
-              <a href="#contact" className="hover:text-amber-400 transition">Contact</a>
+              <a href="/" className="hover:text-amber-400 transition">Home</a>
+              <a href="/#about" className="hover:text-amber-400 transition">About Us</a>
+              <a href="/#products" className="hover:text-amber-400 transition">Products</a>
+              <a href="/#contact" className="hover:text-amber-400 transition">Contact</a>
             </nav>
           </div>
         )}
       </header>
 
-      <div className="max-w-6xl mx-auto mt-19">
-        {/* Header */}
+      <div className="max-w-6xl mx-auto mt-24">
+        {/* Title */}
         <h1 className="text-4xl font-bold text-amber-400 mb-8">{product.name}</h1>
 
-        {/* Product Info Section */}
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Main Product Image */}
           <div className="relative w-full h-80 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
-            <Image
-              src={mainImage}
-              alt={product.name}
-              width={600}
-              height={400}
-              className="object-cover w-full h-full"
-            />
+            <Image src={mainImage} alt={product.name} width={600} height={400} className="object-cover w-full h-full" />
           </div>
 
-          {/* Product Details */}
           <div className="space-y-4">
-            <p>
-              <span className="text-amber-400 font-semibold">Material:</span>{" "}
-              {product.material}
-            </p>
-            <p>
-              <span className="text-amber-400 font-semibold">Color:</span>{" "}
-              {product.color}
-            </p>
-            <p>
-              <span className="text-amber-400 font-semibold">Feature:</span>{" "}
-              {product.feature}
-            </p>
-            <p>
-              <span className="text-amber-400 font-semibold">
-                Surface Finishing:
-              </span>{" "}
-              {product.surface}
-            </p>
-            <p>
-              <span className="text-amber-400 font-semibold">Pack Type:</span>{" "}
-              {product.pack}
-            </p>
-            <p>
-              <span className="text-amber-400 font-semibold">Brand:</span>{" "}
-              {product.brand}
-            </p>
+
+            {/* Toggle Only for Door Kit */}
+            {product.type === "door-kit" && (
+              <>
+                <div className="flex gap-4 py-4">
+                  <button onClick={() => setKitType("double")}
+                    className={`px-5 py-2 rounded-md border ${kitType === "double" ? "bg-amber-500 text-black border-amber-500" : "border-amber-500 text-amber-400"}`}>
+                    SS Double Door Kit
+                  </button>
+                  <button onClick={() => setKitType("single")}
+                    className={`px-5 py-2 rounded-md border ${kitType === "single" ? "bg-amber-500 text-black border-amber-500" : "border-amber-500 text-amber-400"}`}>
+                    SS Single Door Kit
+                  </button>
+                </div>
+
+                {kitType === "double" ? (
+                  <div className="space-y-1 text-lg">
+                    <p>1. Aldrop 12" (16mm Rod 5mm Patta)</p>
+                    <p>2. Latch 10" (12mm × 3mm)</p>
+                    <p>3. Handle 7" — 4 pcs</p>
+                    <p>4. Stopper — 2 pcs</p>
+                    <p>5. Towel Bolt — 2 pcs</p>
+                    <p className="text-amber-400 text-xl font-bold pt-2">Rate: ₹600/-</p>
+                  </div>
+                ) : (
+                  <div className="space-y-1 text-lg">
+                    <p>1. Aldrop 10" (16mm Rod 5mm Patta)</p>
+                    <p>2. Latch 10" (12mm × 3mm)</p>
+                    <p>3. Handle 7" — 2 pcs</p>
+                    <p>4. Stopper — 1 pc</p>
+                    <p>5. Towel Bolt — 1 pc</p>
+                    <p className="text-amber-400 text-xl font-bold pt-2">Rate: ₹460/-</p>
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* If Not Door Kit → Show Normal Specs */}
+            {product.type !== "door-kit" && (
+              <>
+                <p><span className="text-amber-400 font-semibold">Material:</span> {product.material}</p>
+                <p><span className="text-amber-400 font-semibold">Color:</span> {product.color}</p>
+                <p><span className="text-amber-400 font-semibold">Feature:</span> {product.feature}</p>
+                <p><span className="text-amber-400 font-semibold">Surface:</span> {product.surface}</p>
+                <p><span className="text-amber-400 font-semibold">Pack:</span> {product.pack}</p>
+                <p><span className="text-amber-400 font-semibold">Brand:</span> {product.brand}</p>
+              </>
+            )}
 
             <div className="flex gap-4 pt-4">
-              <button
-                onClick={() => (window.location.href = "tel:9821779133")}
-                className="border border-amber-500 text-amber-400 px-6 py-2 rounded-md hover:bg-amber-500 hover:text-black transition"
-              >
+              <button onClick={() => (window.location.href = "tel:9821779133")} className="border border-amber-500 text-amber-400 px-6 py-2 rounded-md hover:bg-amber-500 hover:text-black transition">
                 Request to Call
               </button>
               <button className="bg-amber-500 hover:bg-amber-400 text-black px-6 py-2 rounded-md font-semibold">
@@ -180,8 +151,7 @@ export default function ProductPage() {
           </div>
         </div>
 
-        {/* Enquiry Form */}
-        <div className="mt-16 p-6 md:p-10 bg-gray-900 rounded-xl shadow-lg border border-gray-800">
+            <div className="mt-16 p-6 md:p-10 bg-gray-900 rounded-xl shadow-lg border border-gray-800">
           <h3 className="text-2xl md:text-3xl font-semibold text-amber-400 mb-8 text-center leading-tight">
             Looking for “{product.name}”?
           </h3>
@@ -255,27 +225,12 @@ export default function ProductPage() {
 
 
         {/* Additional Images */}
-        <h2 className="text-2xl font-semibold text-amber-400 mt-12 mb-6 text-center">
-          Additional Images
-        </h2>
-        <div className="flex flex-row flex-wrap  gap-6 justify-center items-center">
+        <h2 className="text-2xl font-semibold text-amber-400 mt-12 mb-6 text-center">Additional Images</h2>
+        <div className="flex flex-wrap gap-6 justify-center">
           {product.images.map((img, idx) => (
-            <div
-              key={idx}
-              onClick={() => setMainImage(img)}
-              className={`relative w-56 h-56 rounded-lg overflow-hidden cursor-pointer border-2 transition-all duration-300 ${mainImage === img
-                ? "border-amber-500 shadow-lg"
-                : "border-gray-700 hover:border-white/80"
-                }`}
-            >
-              <Image
-                src={img}
-                alt={`${product.name} ${idx}`}
-                width={300}
-                height={300}
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+            <div key={idx} onClick={() => setMainImage(img)}
+              className={`relative w-56 h-56 rounded-lg overflow-hidden cursor-pointer border-2 ${mainImage === img ? "border-amber-500 shadow-lg" : "border-gray-700 hover:border-white"}`}>
+              <Image src={img} alt={`${product.name} ${idx}`} width={300} height={300} className="object-cover w-full h-full" />
             </div>
           ))}
         </div>
