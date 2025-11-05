@@ -113,7 +113,7 @@ export default function ProductPage() {
                     <p>3. Handle 7" — 4 pcs</p>
                     <p>4. Stopper — 2 pcs</p>
                     <p>5. Towel Bolt — 2 pcs</p>
-                    <p className="text-amber-400 text-xl font-bold pt-2">Rate: ₹600/-</p>
+                    <p className="text-amber-400 text-xl font-bold pt-2">Rate: ₹599/-</p>
                   </div>
                 ) : (
                   <div className="space-y-1 text-lg">
@@ -122,7 +122,7 @@ export default function ProductPage() {
                     <p>3. Handle 7" — 2 pcs</p>
                     <p>4. Stopper — 1 pc</p>
                     <p>5. Towel Bolt — 1 pc</p>
-                    <p className="text-amber-400 text-xl font-bold pt-2">Rate: ₹460/-</p>
+                    <p className="text-amber-400 text-xl font-bold pt-2">Rate: ₹999/-</p>
                   </div>
                 )}
               </>
