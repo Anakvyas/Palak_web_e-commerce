@@ -31,10 +31,10 @@ const productData = [
     id: "3",
     name: "Stopper",
     material: "Aluminium",
-    color: "Antique Black Satin",
+    color: "chrome",
     feature: "Strong Grip, Corrosion Resistant",
     surface: "Matte Finish",
-    pack: "48/piece",
+    pack: "45/piece",
     brand: "Palak",
     images: ["/images/stopper.png", "/images/stopper1.jpg", "/images/stopper2.jpg", "/images/stopper4.jpg"],
   },
@@ -61,7 +61,6 @@ const productData = [
     pack: "Piece",
     brand: "Palak",
     images: ["/images/door.jpg","/images/door1.jpg", "/images/door2.jpg","/images/door3.jpg"]
-
   }
 ];
 
@@ -165,6 +164,11 @@ export default function ProductPage() {
               <span className="text-amber-400 font-semibold">Brand:</span>{" "}
               {product.brand}
             </p>
+
+            {product.name == "Chest handle"?<p>
+              <span className="text-amber-400 font-semibold">Size Available:</span>{" "}
+              3 inches and 4 inches
+            </p> :""}
 
             <div className="flex gap-4 pt-4">
               <button
